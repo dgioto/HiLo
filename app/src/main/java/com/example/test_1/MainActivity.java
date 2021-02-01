@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog statDialog = new AlertDialog.Builder(MainActivity.this).create();
                 statDialog.setTitle("Guessing Game Stats");
                 //показываем кол-во выигранных пользователем игр
-                statDialog.setMessage("You have won" + gamesWon + " games. Way to go!");
+                statDialog.setMessage("You have won " + gamesWon + " games. Way to go!");
                 statDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 //текст заголовка всплывающег оокна
                 aboutDialog.setTitle("About Guessing Game");
                 //простое сообщение
-                aboutDialog.setMessage("(c)2021 Alexandr, dgioto@gmail.com");
+                aboutDialog.setMessage("(c)2021 Alexandr, \ndgioto@gmail.com");
                 //добавляем кнопку с текстом ОК
                 aboutDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
