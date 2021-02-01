@@ -50,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
                         + " tries!";
 
                 //добавили +1 чтобы учесть победу
-                int gameWon = readSharedPreferences(GAMESWON, 0) + 1;
+                int gamesWon = readSharedPreferences(GAMESWON, 0) + 1;
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                 //создаем редактор что бы написать новое значение в общие настройки
                 SharedPreferences.Editor editor = preferences.edit();
                 // помещаем целочисленное значение gameWon в общие настройки под ключем
                 // с соответствующим именем
-                editor.putInt(GAMESWON, gameWon);
+                editor.putInt(GAMESWON, gamesWon);
                 // применяем изменения
                 editor.apply();
 
@@ -177,9 +177,12 @@ public class MainActivity extends AppCompatActivity {
                 newGame();
                 return  true;
             case R.id.action_gamestats:
+                //получаем количество выиграных битв, со значением по умолчанию 0
                 int gamesWon = readSharedPreferences(GAMESWON, 0);
+                //создаем диологовое окно оповещения
                 AlertDialog statDialog = new AlertDialog.Builder(MainActivity.this).create();
                 statDialog.setTitle("Guessing Game Stats");
+                //показываем кол-во выигранных пользователем игр
                 statDialog.setMessage("You have won" + gamesWon + " games. Way to go!");
                 statDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
