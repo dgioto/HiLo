@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 //текст заголовка всплывающег оокна
                 aboutDialog.setTitle("About Guessing Game");
                 //простое сообщение
-                aboutDialog.setMessage("(c)2021 dgioto");
+                aboutDialog.setMessage("(c)2021 Alexandr, dgioto@gmail.com");
                 //добавляем кнопку с текстом ОК
                 aboutDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
