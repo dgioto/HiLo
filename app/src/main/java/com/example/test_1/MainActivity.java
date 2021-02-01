@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
                 message = "\"" + guess + "\" is correct. \nYOU WIN after " + numberOfTries
                         + " tries!";
 
-                //и добавили +1 чтобы учесть эту победу
+                //добавили +1 чтобы учесть победу
                 int gameWon = readSharedPreferences(GAMESWON, 0) + 1;
-                //создаем редактор что бы написать новое значение в общие настройки
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                //создаем редактор что бы написать новое значение в общие настройки
                 SharedPreferences.Editor editor = preferences.edit();
                 // помещаем целочисленное значение gameWon в общие настройки под ключем
                 // с соответствующим именем
@@ -127,13 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-
-    private int readSharedPreferences(String name, int defaultValue) {
-        //получаем доступ к объекту общих настроек
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //получаем значение хранящееся в ключе, со значением по умолчанию
-        return preferences.getInt(name, defaultValue);
     }
 
     //создаем кнопку МЕНЮ (три точки)
@@ -223,13 +216,19 @@ public class MainActivity extends AppCompatActivity {
     //Хранение и получение предпочтительного диапазона пользователя
     public void storeRange(int newRange){
         //получение доступа к объекту общих настроек по умолчанию
-        SharedPreferences preferences =
-                PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         //для записи в общие настройки используем объект Editor
         SharedPreferences.Editor editor = preferences.edit();
         //сохраняем в переменную значение newRange для ключа range
         editor.putInt("range", newRange);
         //применяем обновление значений общих настроек
         editor.apply();
+    }
+
+    private int readSharedPreferences(String name, int defaultValue) {
+        //получаем доступ к объекту общих настроек
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //получаем значение хранящееся в ключе, со значением по умолчанию
+        return preferences.getInt(name, defaultValue);
     }
 }
