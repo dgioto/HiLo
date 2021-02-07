@@ -1,9 +1,8 @@
-package com.example.test_1;
+package com.example.HiLo;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,13 +17,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.function.Predicate;
-import java.util.prefs.PreferenceChangeEvent;
-
 public class MainActivity extends AppCompatActivity {
 
     private EditText txtGuess;
-    private Button btnGuess;
+    private Button btnGuess, btnNewGame;
     private TextView lblOutput;
     private int theNumber;
     private int numberOfTries = 0;
@@ -105,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         btnGuess = (Button) findViewById(R.id.btnGuess);
         lblOutput = (TextView) findViewById(R.id.lblOutput);
         lblRange = (TextView) findViewById(R.id.textView2);
+        btnNewGame = (Button) findViewById(R.id.btnNewGame);
 
         //получаем значение верхней границы диапазона из общих настроек
         range = readSharedPreferences("range", 100);
@@ -118,6 +115,15 @@ public class MainActivity extends AppCompatActivity {
                 checkGuess();
             }
         });
+
+        //добавляем слушатель кнопки "Новая игра"
+        btnNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newGame();
+            }
+        });
+
 
         //добавляем слушатель кнопки Enter
         txtGuess.setOnEditorActionListener(new TextView.OnEditorActionListener() {
