@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lblOutput;
     private int theNumber;
     private int numberOfTries = 0;
-    private int numberOfTriesMax = 7;
+    private int numberOfTriesMax = 0;
     private int range = 0;
     private TextView lblRange;
     private static final String GAMESWON = "gamesWon";
@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
 
         //получаем значение верхней границы диапазона из общих настроек
         range = readSharedPreferences("range", 100);
+        //получаем значение максимального количества попыток
+        numberOfTriesMax = readSharedPreferences("numberOfTriesMax", 7);
 
         newGame();
 
@@ -161,18 +163,21 @@ public class MainActivity extends AppCompatActivity {
                                 range = 10;
                                 storeRange(10);
                                 numberOfTriesMax = 4;
+                                storeNumberOfTriesMax(4);
                                 newGame();;
                                 break;
                             case 1:
                                 range = 100;
                                 storeRange(100);
                                 numberOfTriesMax = 7;
+                                storeNumberOfTriesMax(7);
                                 newGame();;
                                 break;
                             case 2:
                                 range = 1000;
                                 storeRange(1000);
                                 numberOfTriesMax = 10;
+                                storeNumberOfTriesMax(10);
                                 newGame();;
                                 break;
                         }
@@ -225,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Хранение и получение предпочтительного диапазона пользователя
+    //Хранение предпочтительного диапазона пользователя
     public void storeRange(int newRange){
         //получение доступа к объекту общих настроек по умолчанию
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -234,6 +239,14 @@ public class MainActivity extends AppCompatActivity {
         //сохраняем в переменную значение newRange для ключа range
         editor.putInt("range", newRange);
         //применяем обновление значений общих настроек
+        editor.apply();
+    }
+
+    //Хранение максимального количества попыток для конкретного диапазона пользователя
+    public void storeNumberOfTriesMax(int newNumberOfTriesMax){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("numberOfTriesMax", newNumberOfTriesMax);
         editor.apply();
     }
 
