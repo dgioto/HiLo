@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private int range = 0;
     private TextView lblRange;
     private static final String GAMESWON = "gamesWon";
+    private static final String GAMESLOST = "gamesLost";
 
     public void checkGuess() {
         String guessText = txtGuess.getText().toString();
@@ -63,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 message = "GAME OVER! \nYou have spent all " + numberOfTriesMax + " attempts!";
+
+                //добавляем +1 в счетчик поражений
+                int gamesLost = readSharedPreferences(GAMESLOST, 0) + 1;
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt(GAMESLOST, gamesLost);
+                editor.apply();
+
                 //всплывающее уведомление
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                 newGame();
@@ -193,11 +202,20 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_gamestats:
                 //получаем количество выиграных битв, со значением по умолчанию 0
                 int gamesWon = readSharedPreferences(GAMESWON, 0);
+                //получаем количество проиграных битв, со значением по умолчанию 0
+                int gamesLost = readSharedPreferences(GAMESLOST, 0);
+                //считаем количество всех игр
+                int allGames = gamesWon + gamesLost;
+                //считаем процент выиграных игр
+                double percentWon = ((double)gamesWon / (double)allGames) * 100;
+                int percentWonInt = (int)percentWon;
+
                 //создаем диологовое окно оповещения
                 AlertDialog statDialog = new AlertDialog.Builder(MainActivity.this).create();
                 statDialog.setTitle("Guessing Game Stats");
                 //показываем кол-во выигранных пользователем игр
-                statDialog.setMessage("You have won " + gamesWon + " games. Way to go!");
+                statDialog.setMessage("You have won \"" + gamesWon + "\" from \"" + allGames +
+                        "\" games, " + percentWonInt + "%. Way to go!");
                 statDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
