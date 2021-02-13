@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         //создаем генератор загадываемого числа
         theNumber = (int) (Math.random() * range + 1);
         //предложение ввести число от 1 до значения переменной range
-        lblRange.setText("Enter a number between 1 and " + range + ".");
+        lblRange.setText(getString(R.string.enter_a_number_2)+ " " + range + ".");
         //ввод значения по умолчанию в текстовое поле равное половине range
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();

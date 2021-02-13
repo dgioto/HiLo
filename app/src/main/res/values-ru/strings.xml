@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HiLo</string>
+    <string name="guessingGame">Игра: "Угадай Число"</string>
+    <string name="enter_a_number">Введите число между 1 и 100</string>
+    <string name="number">номер</string>
+    <string name="GUESS">УГАДАЙ</string>
+    <string name="enter_a_number_then_click_guess">Введите число, \nзатем кликните "УГАДАЙ"!</string>
+    <string name="newGame">Новая Игра</string>
+
+    <string name="enter_a_number_2">Введите число между 1 и</string>
+
+</resources>

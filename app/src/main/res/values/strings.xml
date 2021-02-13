@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">HiLo</string>
+    <string name="guessingGame">Guessing Game</string>
+    <string name="enter_a_number">Enter a number between 1 and 100</string>
+    <string name="number">number</string>
+    <string name="GUESS">GUESS</string>
+    <string name="enter_a_number_then_click_guess">Enter a number, then click Guess!</string>
+    <string name="newGame">New Game</string>
+
+    <string name="enter_a_number_2">Enter a number between 1 and</string>
 </resources>
