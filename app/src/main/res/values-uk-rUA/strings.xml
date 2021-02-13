@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Більше Менше</string>
+    <string name="guessingGame">Гра: Відгадай Число</string>
+    <string name="enter_a_number">Введите число между 1 и 100</string>
+    <string name="number">номер</string>
+    <string name="GUESS">Відгадай</string>
+    <string name="enter_a_number_then_click_guess">Введіть число,  далі натисніть Відгадай</string>
+    <string name="newGame">Нова Гра</string>
+    <string name="enter_a_number_2">Введіть число між 1 та</string>
+</resources>

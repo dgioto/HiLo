@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">БольшеМеньше</string>
+    <string name="app_name">Больше Меньше</string>
     <string name="guessingGame">Игра: "Угадай Число"</string>
     <string name="enter_a_number">Введите число между 1 и 100</string>
     <string name="number">номер</string>
