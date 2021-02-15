@@ -6,6 +6,11 @@
     <string name="GUESS">GUESS</string>
     <string name="enter_a_number_then_click_guess">Enter a number, then click Guess!</string>
     <string name="newGame">New Game</string>
-
     <string name="enter_a_number_2">Enter a number between 1 and</string>
+
+    <string-array name="languages">
+        <item>EN</item>
+        <item>RU</item>
+        <item>UK</item>
+    </string-array>
 </resources>
