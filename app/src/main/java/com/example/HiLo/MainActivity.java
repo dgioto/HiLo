@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -14,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +33,25 @@ public class MainActivity extends AppCompatActivity {
     private TextView lblRange;
     private static final String GAMESWON = "gamesWon";
     private static final String GAMESLOST = "gamesLost";
+
+    //Выбор языка программы
+    private void changeLocale(Locale locale){
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(configuration,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        setTitle(R.string.app_name);
+        TextView
+
+    }
+
+    //обработчик выпадающего списка
+    public void onClickLanguage(View view){
+        Spinner language = (Spinner) findViewById(R.id.language);
+        String languageType = String.valueOf(language.getSelectedItem());
+    }
 
     public void checkGuess() {
         String guessText = txtGuess.getText().toString();
