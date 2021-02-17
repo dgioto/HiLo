@@ -91,13 +91,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String enter_a_number_2;
     //создаем новую игру
     public void newGame(){
         //создаем генератор загадываемого числа
         theNumber = (int) (Math.random() * range + 1);
         //предложение ввести число от 1 до значения переменной range
-        lblRange.setText(enter_a_number_2 = getString(R.string.enter_a_number_2) + " " + range + ".");
+        lblRange.setText(getString(R.string.enter_a_number_2) + " " + range + ".");
         //ввод значения по умолчанию в текстовое поле равное половине range
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();
@@ -149,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //выбор языка пользователем
+        Spinner language = (Spinner) findViewById(R.id.spinner);
+        String languageType = String.valueOf(language.getSelectedItem());
+        Locale locale = new Locale(languageType);
+        changeLocale(locale);
     }
 
     //Выбор языка программы
@@ -175,16 +180,11 @@ public class MainActivity extends AppCompatActivity {
 
         TextView btnNewGame = (TextView) findViewById(R.id.btnNewGame);
         btnNewGame.setText(R.string.newGame);
-
-//        enter_a_number_2 = getString(R.string.enter_a_number_2);
     }
 
     //обработчик выпадающего списка
     public void onClickLanguage(View view){
-        Spinner language = (Spinner) findViewById(R.id.spinner);
-        String languageType = String.valueOf(language.getSelectedItem());
-        Locale locale = new Locale(languageType);
-        changeLocale(locale);
+
     }
 
     //создаем кнопку МЕНЮ (три точки)
