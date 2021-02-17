@@ -149,6 +149,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        Spinner language = (Spinner) findViewById(R.id.spinner);
+        String languageType = String.valueOf(language.getSelectedItem());
+        Locale locale = new Locale(languageType);
+        changeLocale(locale);
     }
 
     //Выбор языка программы
@@ -177,14 +182,6 @@ public class MainActivity extends AppCompatActivity {
         btnNewGame.setText(R.string.newGame);
 
 //        enter_a_number_2 = getString(R.string.enter_a_number_2);
-    }
-
-    //обработчик выпадающего списка
-    public void onClickLanguage(View view){
-        Spinner language = (Spinner) findViewById(R.id.spinner);
-        String languageType = String.valueOf(language.getSelectedItem());
-        Locale locale = new Locale(languageType);
-        changeLocale(locale);
     }
 
     //создаем кнопку МЕНЮ (три точки)
