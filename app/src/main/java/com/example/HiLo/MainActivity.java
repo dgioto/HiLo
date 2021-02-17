@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -14,8 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView lblRange;
     private static final String GAMESWON = "gamesWon";
     private static final String GAMESLOST = "gamesLost";
+
+
 
     public void checkGuess() {
         String guessText = txtGuess.getText().toString();
@@ -87,12 +93,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     //создаем новую игру
     public void newGame(){
         //создаем генератор загадываемого числа
         theNumber = (int) (Math.random() * range + 1);
         //предложение ввести число от 1 до значения переменной range
-        lblRange.setText(getString(R.string.enter_a_number_2)+ " " + range + ".");
+        lblRange.setText(getString(R.string.enter_a_number_2) + " " + range + ".");
         //ввод значения по умолчанию в текстовое поле равное половине range
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();
