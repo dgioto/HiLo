@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String GAMESWON = "gamesWon";
     private static final String GAMESLOST = "gamesLost";
 
-
-
     public void checkGuess() {
         String guessText = txtGuess.getText().toString();
         String message = "";
@@ -93,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    private String enter_a_number_2;
     //создаем новую игру
     public void newGame(){
         //создаем генератор загадываемого числа
         theNumber = (int) (Math.random() * range + 1);
         //предложение ввести число от 1 до значения переменной range
-        lblRange.setText(getString(R.string.enter_a_number_2) + " " + range + ".");
+        lblRange.setText(enter_a_number_2 = getString(R.string.enter_a_number_2) + " " + range + ".");
         //ввод значения по умолчанию в текстовое поле равное половине range
         txtGuess.setText("" + range / 2);
         txtGuess.requestFocus();
@@ -151,6 +149,42 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    //Выбор языка программы
+    private void changeLocale(Locale locale){
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(configuration,
+                getBaseContext().getResources().getDisplayMetrics());
+        //устанавливаем значение из string.xml в название приложения
+        setTitle(R.string.app_name);
+        //устанавливаем значение из string.xml в id.textView
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(R.string.guessingGame);
+
+        TextView textView2 = (TextView) findViewById(R.id.textView2);
+        textView2.setText(R.string.enter_a_number);
+
+        TextView btnGuess = (TextView) findViewById(R.id.btnGuess);
+        btnGuess.setText(R.string.GUESS);
+
+        TextView lblOutput = (TextView) findViewById(R.id.lblOutput);
+        lblOutput.setText(R.string.enter_a_number_then_click_guess);
+
+        TextView btnNewGame = (TextView) findViewById(R.id.btnNewGame);
+        btnNewGame.setText(R.string.newGame);
+
+//        enter_a_number_2 = getString(R.string.enter_a_number_2);
+    }
+
+    //обработчик выпадающего списка
+    public void onClickLanguage(View view){
+        Spinner language = (Spinner) findViewById(R.id.spinner);
+        String languageType = String.valueOf(language.getSelectedItem());
+        Locale locale = new Locale(languageType);
+        changeLocale(locale);
     }
 
     //создаем кнопку МЕНЮ (три точки)
