@@ -139,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         //добавляем слушатель кнопки Enter
         txtGuess.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -148,43 +147,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-        //выбор языка пользователем
-        Spinner language = (Spinner) findViewById(R.id.spinner);
-        String languageType = String.valueOf(language.getSelectedItem());
-        Locale locale = new Locale(languageType);
-        changeLocale(locale);
-    }
-
-    //Выбор языка программы
-    private void changeLocale(Locale locale){
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-        configuration.setLocale(locale);
-        getBaseContext().getResources().updateConfiguration(configuration,
-                getBaseContext().getResources().getDisplayMetrics());
-        //устанавливаем значение из string.xml в название приложения
-        setTitle(R.string.app_name);
-        //устанавливаем значение из string.xml в id.textView
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(R.string.guessingGame);
-
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText(R.string.enter_a_number);
-
-        TextView btnGuess = (TextView) findViewById(R.id.btnGuess);
-        btnGuess.setText(R.string.GUESS);
-
-        TextView lblOutput = (TextView) findViewById(R.id.lblOutput);
-        lblOutput.setText(R.string.enter_a_number_then_click_guess);
-
-        TextView btnNewGame = (TextView) findViewById(R.id.btnNewGame);
-        btnNewGame.setText(R.string.newGame);
-    }
-
-    //обработчик выпадающего списка
-    public void onClickLanguage(View view){
-
     }
 
     //создаем кнопку МЕНЮ (три точки)
